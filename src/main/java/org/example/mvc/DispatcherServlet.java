@@ -36,11 +36,13 @@ public class DispatcherServlet extends HttpServlet {
             // ** URI는 스트링, URL은 스트링 버퍼
 
             // 컨트롤러에게 작업을 위임
+            // "redirect:/users"
+            // forwarding과 redirecting은 분리되어야 한다 ~ view resolver의 역할 : 리다이렉트 뷰인지, jsp 뷰인지 판단한다
             String viewName = handler.handleRequest(req, resp);
 
             // 요청 url를 가지고 요청 dispatcher를 가져온 뒤, 해당하는 view로 전달하는 코드
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher(viewName);
-            requestDispatcher.forward(req, resp);
+//            RequestDispatcher requestDispatcher = req.getRequestDispatcher(viewName);
+//            requestDispatcher.forward(req, resp);
 
         } catch (Exception e) {
             logger.error("exception occurred : [{}]", e.getMessage(), e);

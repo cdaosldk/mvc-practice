@@ -1,9 +1,6 @@
 package org.example.mvc;
 
-import org.example.mvc.controller.RequestMethod;
-import org.example.mvc.controller.Controller;
-import org.example.mvc.controller.HomeController;
-import org.example.mvc.controller.UserListController;
+import org.example.mvc.controller.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +13,10 @@ public class RequestMappingHandlerMapping {
     void init() {
         mappings.put(new HandlerKey(RequestMethod.GET, "/"), new HomeController());
         mappings.put(new HandlerKey(RequestMethod.GET, "/users"), new UserListController());
-        mappings.put(new HandlerKey(RequestMethod.POST, "/users"), new UserListController());
+        // form.jsp에서 /users로 post 요청을 보내면 dispatcherServlet이 받고, 이후 RMHM에서 알맞은 컨트롤러로 연결한다
+        mappings.put(new HandlerKey(RequestMethod.POST, "/users"), new UserCreateController());
+        // forward는 요청이 들어올 경우 해당 url로 이동시킴
+        mappings.put(new HandlerKey(RequestMethod.GET, "/user/form"), new ForwardController("/user/form.jsp"));
     }
 
     public Controller findHandler(HandlerKey handlerKey) {

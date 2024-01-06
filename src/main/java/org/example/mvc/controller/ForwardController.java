@@ -1,4 +1,18 @@
 package org.example.mvc.controller;
 
-public class ForwardController {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// forward는 단순하게 링크를 이동시켜주는 것
+public class ForwardController implements Controller{
+    private final String forwardUriPath;
+
+    public ForwardController(String forwardUriPath) {
+        this.forwardUriPath = forwardUriPath;
+    }
+
+    @Override
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return forwardUriPath;
+    }
 }
