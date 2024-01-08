@@ -16,7 +16,7 @@ public class RequestMappingHandlerMapping {
         // form.jsp에서 /users로 post 요청을 보내면 dispatcherServlet이 받고, 이후 RMHM에서 알맞은 컨트롤러로 연결한다
         mappings.put(new HandlerKey(RequestMethod.POST, "/users"), new UserCreateController());
         // forward는 요청이 들어올 경우 해당 url로 이동시킴
-        mappings.put(new HandlerKey(RequestMethod.GET, "/user/form"), new ForwardController("/user/form.jsp"));
+        mappings.put(new HandlerKey(RequestMethod.GET, "/user/form"), new ForwardController("/user/form"));
     }
 
     public Controller findHandler(HandlerKey handlerKey) {

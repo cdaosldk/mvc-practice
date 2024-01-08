@@ -25,6 +25,8 @@ public class DispatcherServlet extends HttpServlet {
 
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
+    private List<HandlerAdapter> handlerAdapterList;
+
     private List<ViewResolver> viewResolverList;
 
     // 서블릿의 초기화는 톰캣 실행 시
@@ -33,6 +35,7 @@ public class DispatcherServlet extends HttpServlet {
         requestMappingHandlerMapping = new RequestMappingHandlerMapping();
         requestMappingHandlerMapping.init();
 
+        handlerAdapterList = List.of(new SimpleControllerHandlerAdapter());
         viewResolverList = Collections.singletonList(new JspViewResolver());
     }
 
