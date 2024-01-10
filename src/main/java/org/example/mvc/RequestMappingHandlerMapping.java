@@ -11,8 +11,8 @@ public class RequestMappingHandlerMapping implements HandlerMapping {
     private Map<HandlerKey, Controller> mappings = new HashMap<>();
 
     void init() {
-//        mappings.put(new HandlerKey(RequestMethod.GET, "/home"), new HomeController());
-        mappings.put(new HandlerKey(RequestMethod.GET, "/user/list"), new UserListController());
+//        mappings.put(new HandlerKey(RequestMethod.GET, "/"), new HomeController());
+        mappings.put(new HandlerKey(RequestMethod.GET, "/users"), new UserListController());
         // form.jsp에서 /users로 post 요청을 보내면 dispatcherServlet이 받고, 이후 RMHM에서 알맞은 컨트롤러로 연결한다
         mappings.put(new HandlerKey(RequestMethod.POST, "/users"), new UserCreateController());
         // forward는 요청이 들어올 경우 해당 url로 이동시킴

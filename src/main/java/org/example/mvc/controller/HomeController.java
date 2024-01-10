@@ -11,6 +11,6 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return "/home";
+        return "home";
     }
 }

@@ -39,7 +39,7 @@ public class DispatcherServlet extends HttpServlet {
         AnnotationHandlerMapping ahm = new AnnotationHandlerMapping("org.example");
 
         handlerMappingList = List.of(rmhm, ahm);
-        handlerAdapterList = List.of(new SimpleControllerHandlerAdapter());
+        handlerAdapterList = List.of(new SimpleControllerHandlerAdapter(), new AnnotationHandlerAdapter());
         viewResolverList = Collections.singletonList(new JspViewResolver());
     }
 
